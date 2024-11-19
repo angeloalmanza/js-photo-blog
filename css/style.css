@@ -30,6 +30,11 @@ header h1{
 }
 
 /* MAIN */
+.col {
+    display: flex;
+    flex-grow: 1;
+}
+
 .card {
     position: relative;
 }
