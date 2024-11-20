@@ -7,8 +7,17 @@ const overlayBtn = document.getElementById('overlay-btn');
 const addClickListener = () => {
     const cards = document.querySelectorAll(".card");
     cards.forEach((curCard) => {
-        curCard.addEventListener("click", () => {
-            overlayContainer.style.display = 'flex';
+        curCard.addEventListener("click", (event) => {
+            // Seleziono l'immagine cliccata
+            const imgElem = curCard.querySelector("img");
+            
+            // Trova l'elemento immagine nell'overlay
+            const overlayImg = overlayContainer.querySelector("img");
+
+            // Imposto l'URL dell'immagine nell'overlay
+            overlayImg.src = imgElem.src;
+            
+            overlayContainer.classList.remove("d-none");
         })
     })
 }
@@ -23,6 +32,7 @@ const createCard = () => {
     // Una sola richiesta per ottenere 6 card
     axios.get('https://jsonplaceholder.typicode.com/photos', {params})
         .then((resp) => {
+            console.log(resp);
             resp.data.forEach((photo) => {
                 result += `
                     <div class="col mb-4">
@@ -50,5 +60,5 @@ createCard();
 
 // Al click del bottone l'overlay si chiude
 overlayBtn.addEventListener("click", () => {
-    overlayContainer.style.display = 'none';
+    overlayContainer.classList.add("d-none");
 })
