@@ -13,6 +13,12 @@ body {
     position: relative;
 }
 
+/* COMMON */
+.card, 
+.overlay .btn {
+    cursor: pointer;
+}
+
 /* HEADER */
 header {
     height: 100px;
@@ -70,6 +76,7 @@ header h1{
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 .overlay {
@@ -84,6 +91,6 @@ header h1{
 }
 
 .overlay img {
-    max-width: 400px;
-    height: 400px;
+    max-width: 20rem;
+    height: 20rem;
 }

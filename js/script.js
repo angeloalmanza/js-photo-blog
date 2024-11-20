@@ -1,5 +1,17 @@
 // Prelevo i dati dall'HTML
 const rowElem = document.querySelector('.row');
+const overlayContainer = document.querySelector('.overlay-container');
+const overlayBtn = document.getElementById('overlay-btn');
+
+/** funzione che al click di una card fa comparire l'overlay */
+const addClickListener = () => {
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((curCard) => {
+        curCard.addEventListener("click", () => {
+            overlayContainer.style.display = 'flex';
+        })
+    })
+}
 
 // Chiamata API
 const params = {
@@ -26,6 +38,8 @@ const createCard = () => {
 
             // Una volta ottenuti i risultati, aggiorna il DOM
             rowElem.innerHTML = result;
+
+            addClickListener();
         })
         .catch((error) => {
             console.error('Errore nella richiesta:', error);
@@ -33,3 +47,8 @@ const createCard = () => {
 }
 
 createCard();
+
+// Al click del bottone l'overlay si chiude
+overlayBtn.addEventListener("click", () => {
+    overlayContainer.style.display = 'none';
+})
